@@ -2,19 +2,21 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import { Tabs } from 'expo-router'
 import {Ionicons} from "@expo/vector-icons"
+import useTheme from '@/hooks/useTheme'
 
 
 
 const TabsLayout = () => {
+    const {colors} = useTheme();
   return (
     <Tabs
     screenOptions={{
-        tabBarActiveTintColor: "red",
-        tabBarInactiveTintColor: "green",
+        tabBarActiveTintColor: colors.primary,
+        tabBarInactiveTintColor: colors.textMuted,
         tabBarStyle: {
-            backgroundColor : "#1e293b",
+            backgroundColor : colors.surface,
             borderTopWidth: "1",
-            borderTopColor: "black",
+            borderTopColor: colors.border,
             height:90,
             paddingBottom: 30,
             paddingTop: 10,
@@ -28,7 +30,7 @@ const TabsLayout = () => {
     }}
     >
         <Tabs.Screen
-        name='index'
+        name='index' //Must match file name
         options={{
             title:"Todos",
             tabBarIcon: ({color,size}) => (
@@ -42,7 +44,7 @@ const TabsLayout = () => {
         }}
         />  
         <Tabs.Screen
-        name='settings'
+        name='settings' //Must match File name
         options={{
             title:"Settings",
             tabBarIcon: ({color,size}) => (
