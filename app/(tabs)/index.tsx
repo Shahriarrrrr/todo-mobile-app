@@ -1,7 +1,12 @@
-import { Link } from "expo-router";
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { api } from "@/convex/_generated/api";
 import useTheme from "@/hooks/useTheme";
+import { useQuery } from "convex/react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+
+
 export default function Index() {
+  const todos  = useQuery(api.todos.getTodos);
+  console.log(todos)
   const {toggleDarkMode} = useTheme(); 
   return (
     <View
