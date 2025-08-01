@@ -1,4 +1,4 @@
-import { View, Text, TextInput, TouchableOpacity } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, Alert } from 'react-native'
 import React, { useState } from 'react'
 import useTheme from '@/hooks/useTheme'
 import { createHomeStyles } from '@/assets/styles/home.styles';
@@ -14,7 +14,17 @@ const TodoInput = () => {
     const addTodo = useMutation(api.todos.addTodos);
 
     const handleAddTodo =  async () => {
-        
+        if(newTodo.trim()){
+          try {
+            await addTodo({
+              text: newTodo.trim()
+            })
+            setNewTodo("")
+          }catch(error){
+            Alert.alert("Error", "Failed to add todo")
+            console.log("Error adding Todo", error)
+          }
+        }
     }
 
   return (

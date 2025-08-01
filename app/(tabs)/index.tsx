@@ -13,6 +13,8 @@ import TodoInput from "@/components/TodoInput";
 export default function Index() {
   const { toggleDarkMode, colors } = useTheme(); // ✅ get colors first
   const homeStyles = createHomeStyles(colors);          // ✅ pass colors properly
+  const todos = useQuery(api.todos.getTodos);
+
 
   return (
     <LinearGradient colors ={colors.gradients.background} style={homeStyles.container}>
@@ -20,9 +22,12 @@ export default function Index() {
     <SafeAreaView  style={homeStyles.container}>
       <Header></Header>
       <TodoInput/>
-      <TouchableOpacity onPress={toggleDarkMode}>
+      {
+        todos?.map(todo => <Text key={todo._id}>{todo.text}</Text>)
+      }
+      {/* <TouchableOpacity onPress={toggleDarkMode}>
         <Text>Toggle Mode</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </SafeAreaView>
     </LinearGradient>
     
