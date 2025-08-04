@@ -6,10 +6,9 @@ import { LinearGradient } from 'expo-linear-gradient'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Ionicons } from '@expo/vector-icons'
 import ProgressStats from '@/components/ProgressStats'
+import Preferences from '@/components/Preferences'
 
 const SettingsScreen= () => {
-  const [isAutoSync, setIsAutoSync] = useState(true)
-  const [isNotificationsEnabled, setIsNotificationsEnabled] = useState(true)
   const {colors, isDarkMode, toggleDarkMode}  = useTheme()
   const settingsStyles = createSettingsStyles(colors)
   return (
@@ -29,7 +28,8 @@ const SettingsScreen= () => {
         showsVerticalScrollIndicator = {false}
         >
           <ProgressStats />
-
+          {/* PREFRENCES */}
+          <Preferences />
         </ScrollView>
       </SafeAreaView>
     </LinearGradient>
